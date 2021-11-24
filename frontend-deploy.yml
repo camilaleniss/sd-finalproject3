@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icesihealth-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: icesihealth-frontend
+  template:
+    metadata:
+      labels:
+        app: icesihealth-frontend
+    spec:
+      containers:
+      - name: icesihealth-frontend
+        image: camilaleniss/icesihealth-frontend
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080 # As is defined in the Javascript app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: icesihealth-frontend
+  labels:
+    app: icesihealth-frontend
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: icesihealth-frontend
