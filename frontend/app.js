@@ -26,7 +26,7 @@ var MODE = {
 
 var CURRENTMODE = MODE.BACKEND;
 
-var API_URL = "http://127.0.0.1:8089/"
+var API_URL = process.env.ICESIHEALTH_BACKEND_SERVICE_HOST || "http://127.0.0.1:8089/"
 
 app.post('/mode', function(req, res) {
   logger.debug('called the mode endpoint with mode: ' + req.query.mode);
