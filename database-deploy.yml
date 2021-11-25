@@ -20,6 +20,11 @@ spec:
         image: couchdb
         ports:
         - containerPort: 5984 # As is defined in the Javascript app
+        env:
+        - name: COUCHDB_USER
+          value: admin
+        - name: COUCHDB_PASSWORD
+          value: password
 ---        
 apiVersion: v1
 kind: Service

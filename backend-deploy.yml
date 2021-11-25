@@ -15,10 +15,13 @@ spec:
     spec:
       containers:
       - name: icesihealth-backend
-        image: camilaleniss/icesihealth-backend
+        image: camilaleniss/icesihealth-backend-app
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8089 # As is defined in the Javascript app
+        env:
+          - name: DATABASE_URL
+            value: couchdb
 ---
 apiVersion: v1
 kind: Service
