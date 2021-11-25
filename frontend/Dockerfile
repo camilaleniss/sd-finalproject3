@@ -1,6 +1,10 @@
-FROM node:8.16.1-alpine
+FROM node:12-alpine3.14
 WORKDIR /app
-COPY . /app
+COPY package.json /app
+
 RUN npm install
-EXPOSE 8080
+
+COPY . /app
+
 CMD node app.js
+EXPOSE 8080
